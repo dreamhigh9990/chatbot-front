@@ -1,0 +1,51 @@
+<form
+  class="container"
+  action=""
+  #userform="ngForm"
+  style="width:1333px"
+  (ngSubmit)="onsubmit()"
+>
+  <div>
+    <div>
+      <div style="width:500px;margin:auto;">
+        <div style="padding:20px;">
+          <label for="inputEmail4" style="width: 150px;">Email: </label>
+          <input
+            type="email"
+            class="form-control  is-invalid"
+            id="inputEmail4"
+            name="email"
+            #email="ngModel"
+            required
+            [class.is-invalid]="email.invalid && email.touched"
+            [(ngModel)]="data.email"
+            placeholder="Email"
+          />
+        </div>
+        <div style="padding-bottom:20px;">
+          <label for="inputPassword4">Password: </label>
+          <input
+            type="password"
+            class="form-control  is-invalid"
+            id="inputPassword4"
+            name="password"
+            #pass="ngModel"
+            required
+            [class.is-invalid]="pass.invalid && pass.touched"
+            [(ngModel)]="data.password"
+            placeholder="Password"
+          />
+        </div>
+        <div style="width:150px;margin-left:100px;">
+          <button
+            type="submit"
+            [disabled]="userform.form.invalid"
+            class="btn btn-primary"
+          >
+            Login
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

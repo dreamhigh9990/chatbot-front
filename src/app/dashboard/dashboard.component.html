@@ -1,0 +1,164 @@
+<div>
+  <div style="border: 2px solid black;">
+    <div
+      style="text-align: end; font-size: x-large; font-weight: 900; padding: 10px;"
+    >
+      {{ userName }}
+    </div>
+  </div>
+  <div style="border:2px solid black; height:100%; display: flex;">
+    <div style="width:15%;height:92vh; border: 2px solid black;">
+      <div
+        style="padding: 20px;border-bottom: 4px solid black; font-weight: 900;"
+      >
+        Create Contact
+      </div>
+      <div
+        style="padding: 20px;border-bottom: 4px solid black; font-weight: 900;"
+        (click)="Onchat()"
+      >
+        Chat
+      </div>
+      <div
+        style="padding: 20px;border-bottom: 4px solid black; font-weight: 900;"
+      >
+        Logout
+      </div>
+    </div>
+    <div>
+      <form
+        class="container"
+        action=""
+        #userform="ngForm"
+        style="width:1333px"
+        (ngSubmit)="onsubmit()"
+      >
+        <div>
+          <div class="form-row">
+            <div class="form-row">
+              <div class="form-group" style="height: 150px;">
+                <div style="padding:20px" for="inputEmail4">Name</div>
+                <div style="padding-left: 20px;">
+                  <input
+                    style="height:50px;width:100%;padding:20px;"
+                    type="text"
+                    class="form-control  is-invalid"
+                    id="inputEmail4"
+                    name="fname"
+                    #name="ngModel"
+                    required
+                    [class.is-invalid]="name.invalid && name.touched"
+                    [(ngModel)]="data.fname"
+                    placeholder="Name"
+                  />
+                </div>
+                <div *ngIf="name.errors && name.invalid && name.touched">
+                  <small
+                    *ngIf="name.errors.required"
+                    style="color:red;padding-left: 20px;"
+                    >Please enter Name</small
+                  >
+                </div>
+              </div>
+              <div class="form-group" style="height: 150px;">
+                <div style="padding:20px" for="inputZip">Phone No</div>
+                <div style="padding-left: 20px;">
+                  <input
+                    style="height:50px;width:100%;padding:20px;"
+                    type="Number"
+                    class="form-control  is-invalid"
+                    #phone="ngModel"
+                    [(ngModel)]="data.phone"
+                    pattern="^\d{10}$"
+                    #phone="ngModel"
+                    required
+                    [class.is-invalid]="phone.invalid && phone.touched"
+                    name="phone"
+                    id="inputphone"
+                    placeholder="Phone Number"
+                  />
+                </div>
+
+                <!-- <small  class="text-danger" [class.d-none]="phone.valid || phone.untouched">Please phone no  is required</small> -->
+                <div *ngIf="phone.errors && phone.invalid && phone.touched">
+                  <small
+                    *ngIf="phone.errors.required"
+                    style="color:red;padding-left: 20px;"
+                    >Please enter your Phone no</small
+                  >
+                  <small
+                    *ngIf="phone.errors.pattern"
+                    style="color:red;padding-left: 20px;"
+                    >Please Enter valid phone no</small
+                  >
+                </div>
+              </div>
+              <div class="form-group" style="height: 150px;">
+                <div style="padding:20px" for="inputEmail4">Email</div>
+                <div style="padding-left: 20px;">
+                  <input
+                    style="height:50px;width:100%;padding:20px;"
+                    type="email"
+                    class="form-control  is-invalid"
+                    id="inputEmail4"
+                    name="email"
+                    #email="ngModel"
+                    required
+                    [class.is-invalid]="email.invalid && email.touched"
+                    [(ngModel)]="data.email"
+                    placeholder="Email"
+                  />
+                </div>
+                <div *ngIf="email.errors && email.invalid && email.touched">
+                  <small
+                    *ngIf="email.errors.required"
+                    style="color:red;padding-left: 20px;"
+                    >Please enter Email</small
+                  >
+                </div>
+              </div>
+              <div class="form-group" style="height: 150px;">
+                <div style="padding:20px" for="inputPassword4">Password</div>
+                <div style="padding-left: 20px;">
+                  <input
+                    style="height:50px;width:100%;padding:20px;"
+                    type="password"
+                    class="form-control  is-invalid"
+                    id="inputPassword4"
+                    name="password"
+                    #pass="ngModel"
+                    required
+                    [class.is-invalid]="pass.invalid && pass.touched"
+                    [(ngModel)]="data.password"
+                    placeholder="Password"
+                  />
+                </div>
+                <div *ngIf="pass.errors && pass.invalid && pass.touched">
+                  <small
+                    *ngIf="pass.errors.required"
+                    style="color:red;padding-left: 20px;"
+                    >Please enter password</small
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="form-row" style="text-align: center;">
+              <button
+                type="submit"
+                [disabled]="userform.form.invalid"
+                class="btn btn-primary"
+                style="font-size: x-large;
+                margin: 20px;
+                height: 50px;
+                width: 150px;
+                background-color: cadetblue;"
+              >
+                Sign up
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

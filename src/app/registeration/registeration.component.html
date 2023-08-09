@@ -1,0 +1,91 @@
+<form
+  class="container"
+  action=""
+  #userform="ngForm"
+  style="width:1333px"
+  (ngSubmit)="onsubmit()"
+>
+  <div>
+    <div >
+      <div style="width: 500px;margin: auto;">
+        <div style="padding:20px;">
+          <label for="inputEmail4" style="width:150px;margin-left: 30px;">Name: </label>
+          <input
+            type="text"
+            class="form-control  is-invalid"
+            id="inputEmail4"
+            name="fname"
+            #email="ngModel"
+            required
+            [class.is-invalid]="email.invalid && email.touched"
+            [(ngModel)]="data.fname"
+            placeholder="Email"
+          />
+        </div>
+        <div style="padding:20px;" >
+          <label for="inputZip" style="width:150px;"> Phone No: </label>
+          <input
+            type="Number"
+            class="form-control  is-invalid"
+            #phone="ngModel"
+            [(ngModel)]="data.phone"
+            pattern="^\d{10}$"
+            #phone="ngModel"
+            required
+            [class.is-invalid]="phone.invalid && phone.touched"
+            name="phone"
+            id="inputphone"
+            placeholder="phone number"
+          />
+          <!-- <small  class="text-danger" [class.d-none]="phone.valid || phone.untouched">Please phone no  is required</small> -->
+          <div *ngIf="phone.errors && (phone.invalid && phone.touched)">
+            <small class="text-danger" *ngIf="phone.errors.required"
+              >Please enter your Phone no</small
+            >
+            <small class="text-danger" *ngIf="phone.errors.pattern"
+              >Please Enter valid phone no</small
+            >
+          </div>
+        </div>
+        <div style="padding:20px;">
+          <label for="inputEmail4" style="width:150px;margin-left: 30px;">Email: </label>
+          <input
+            type="email"
+            class="form-control  is-invalid"
+            id="inputEmail4"
+            name="email"
+            #email="ngModel"
+            required
+            [class.is-invalid]="email.invalid && email.touched"
+            [(ngModel)]="data.email"
+            placeholder="Email"
+          />
+        </div>
+        <div style="padding:20px;">
+          <label for="inputPassword4" style="width:150px; margin-left:10px;">Password: </label>
+          <input
+            type="password"
+            class="form-control  is-invalid"
+            id="inputPassword4"
+            name="password"
+            #pass="ngModel"
+            required
+            [class.is-invalid]="pass.invalid && pass.touched"
+            [(ngModel)]="data.password"
+            placeholder="Password"
+          />
+        </div>
+        <div style="width:150px;margin-left:100px;">
+          <button
+            type="submit"
+            [disabled]="userform.form.invalid"
+            class="btn btn-primary"
+          >
+            Sign up
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</form>
